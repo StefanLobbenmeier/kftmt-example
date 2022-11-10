@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.7.20"
     application
+    id ("com.diffplug.spotless") version "6.11.0"
 }
 
 group = "org.example"
@@ -26,4 +27,10 @@ tasks.withType<KotlinCompile> {
 
 application {
     mainClass.set("MainKt")
+}
+
+spotless {
+    kotlin {
+        ktfmt().dropboxStyle()
+    }
 }
